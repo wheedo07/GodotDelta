@@ -100,11 +100,11 @@ Meaning:
 - `patch.pck`: a live patch cache file that gets rebuilt repeatedly
 - `sandbox_dir`: the runnable sandbox copy
 
-## UI
+## GUI
 
 Packaged builds include:
 - `gddelta(.exe)`: CLI
-- `GodotDelta(.exe/.x86_64)`: UI
+- `GodotDelta(.exe/.x86_64)`: GUI
 - `default.gddeltainclude`
 
 You can start the UI directly or from CLI:
@@ -112,6 +112,7 @@ You can start the UI directly or from CLI:
 ```bash
 gddelta ui
 ```
+
 ## `.gddeltainclude`
 
 `make-patch` uses `.gddeltainclude` from the modder project's root directory to limit project scanning.
