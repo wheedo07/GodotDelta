@@ -107,7 +107,7 @@ Packaged builds include:
 - `GodotDelta(.exe/.x86_64)`: GUI
 - `default.gddeltainclude`
 
-You can start the UI directly or from CLI:
+You can start the GUI directly or from CLI:
 
 ```bash
 gddelta ui
