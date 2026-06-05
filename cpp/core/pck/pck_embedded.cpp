@@ -1,13 +1,11 @@
 #include "pck_embedded.h"
-
 #include "pck_format.h"
-
-#include <array>
-#include <cstring>
-#include <fstream>
-#include <stdexcept>
-#include <string>
-#include <vector>
+#include<array>
+#include<cstring>
+#include<fstream>
+#include<string>
+#include<vector>
+#include<stdexcept>
 using namespace gddelta::pck;
 
 namespace {
