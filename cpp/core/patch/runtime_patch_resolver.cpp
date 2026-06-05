@@ -439,24 +439,7 @@ bool RuntimePatchResolver::patch_file_differs_from_base(
         return true;
     }
 
-    const auto source_size = std::filesystem::file_size(file.source_path);
-    if(base_entry->size != source_size) {
-        return true;
-    }
-
-    const auto base_data = base_reader.read_entry_data(*base_entry);
-    std::ifstream input(file.source_path, std::ios::binary);
-    if(!input) {
-        throw std::runtime_error("Failed to open project file for comparison: " + file.source_path.string());
-    }
-
-    std::vector<std::uint8_t> source_data(static_cast<std::size_t>(source_size));
-    input.read(reinterpret_cast<char *>(source_data.data()), static_cast<std::streamsize>(source_data.size()));
-    if(!input) {
-        throw std::runtime_error("Failed to read project file for comparison: " + file.source_path.string());
-    }
-
-    return base_data != source_data;
+    return !base_reader.entry_matches_file(*base_entry, file.source_path);
 }
 
 std::vector<std::string> RuntimePatchResolver::collect_text_resource_references(const std::string& relative_path) const {

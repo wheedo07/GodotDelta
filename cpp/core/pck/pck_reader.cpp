@@ -1,6 +1,8 @@
 #include "pck_reader.h"
 #include "pck_embedded.h"
 #include<algorithm>
+#include<array>
+#include<cstring>
 #include<fstream>
 #include<stdexcept>
 #include<vector>
@@ -176,4 +178,56 @@ std::vector<std::uint8_t> PckReader::read_entry_data(const PckEntry& entry) cons
         throw std::runtime_error("Failed to read PCK entry data: " + entry.path);
     }
     return bytes;
+}
+
+bool PckReader::entry_matches_file(const PckEntry& entry, const std::filesystem::path& file_path) const {
+    std::error_code ec;
+    const auto source_size = std::filesystem::file_size(file_path, ec);
+    if(ec) {
+        throw std::runtime_error("Failed to stat project file for comparison: " + file_path.string());
+    }
+    if(entry.size != source_size) {
+        return false;
+    }
+
+    std::ifstream pck_stream(path_, std::ios::binary);
+    if(!pck_stream) {
+        throw std::runtime_error("Failed to reopen PCK file: " + path_.string());
+    }
+
+    std::ifstream source_stream(file_path, std::ios::binary);
+    if(!source_stream) {
+        throw std::runtime_error("Failed to open project file for comparison: " + file_path.string());
+    }
+
+    pck_stream.seekg(static_cast<std::streamoff>(entry.offset), std::ios::beg);
+    if(!pck_stream) {
+        throw std::runtime_error("Failed to seek PCK entry data: " + entry.path);
+    }
+
+    std::array<char, 64 * 1024> pck_buffer {};
+    std::array<char, 64 * 1024> source_buffer {};
+    auto remaining = entry.size;
+
+    while(remaining > 0) {
+        const auto chunk_size = static_cast<std::size_t>(std::min<std::uint64_t>(remaining, pck_buffer.size()));
+
+        pck_stream.read(pck_buffer.data(), static_cast<std::streamsize>(chunk_size));
+        if(static_cast<std::size_t>(pck_stream.gcount()) != chunk_size) {
+            throw std::runtime_error("Failed to read PCK entry data: " + entry.path);
+        }
+
+        source_stream.read(source_buffer.data(), static_cast<std::streamsize>(chunk_size));
+        if(static_cast<std::size_t>(source_stream.gcount()) != chunk_size) {
+            throw std::runtime_error("Failed to read project file for comparison: " + file_path.string());
+        }
+
+        if(std::memcmp(pck_buffer.data(), source_buffer.data(), chunk_size) != 0) {
+            return false;
+        }
+
+        remaining -= static_cast<std::uint64_t>(chunk_size);
+    }
+
+    return true;
 }

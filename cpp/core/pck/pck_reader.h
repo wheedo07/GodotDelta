@@ -23,5 +23,9 @@ namespace gddelta::pck {
             [[nodiscard]] const std::vector<PckEntry>& entries() const noexcept;
             [[nodiscard]] std::optional<PckEntry> find_entry(std::string_view pack_path) const;
             [[nodiscard]] std::vector<std::uint8_t> read_entry_data(const PckEntry& entry) const;
+            [[nodiscard]] bool entry_matches_file(
+                const PckEntry& entry,
+                const std::filesystem::path& file_path
+            ) const;
     };
 }
