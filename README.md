@@ -141,4 +141,4 @@ Script/**
 
 ## Credits
 
-- Some Godot pack and decompilation behavior was studied with reference to [gdsdecomp](https://github.com/GDRETools/gdsdecomp).
+- Some Godot pack and decompilation behavior was studied with reference to [GDRETools](https://github.com/GDRETools/gdsdecomp).
