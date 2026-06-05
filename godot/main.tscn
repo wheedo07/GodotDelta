@@ -1,0 +1,319 @@
+[gd_scene format=3 uid="uid://l5l6qqab1mfj"]
+
+[ext_resource type="Script" uid="uid://kt0a84a64en2" path="res://script/main.gd" id="1_x7d3m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.0941176, 0.105882, 0.133333, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.196078, 0.235294, 0.313726, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_log"]
+bg_color = Color(0.0588235, 0.0666667, 0.0862745, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Main" type="Control" unique_id=1328449652]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x7d3m")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=886320193]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="Root" type="VBoxContainer" parent="Margin" unique_id=405007918]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Header" type="Label" parent="Margin/Root" unique_id=400877610]
+layout_mode = 2
+text = "GodotDelta"
+
+[node name="Subheader" type="Label" parent="Margin/Root" unique_id=735948443]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.670588, 0.733333, 0.858824, 1)
+text = "Patch and apply Godot 4.x projects with the packaged gddelta runtime."
+
+[node name="RuntimeStatus" type="Label" parent="Margin/Root" unique_id=223692293]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.552941, 0.615686, 0.733333, 1)
+text = "gddelta: resolving..."
+
+[node name="AdvancedToggle" type="CheckBox" parent="Margin/Root" unique_id=884014002]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Enable advanced features"
+
+[node name="Tabs" type="TabContainer" parent="Margin/Root" unique_id=1863694952]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+current_tab = 0
+
+[node name="Patch" type="VBoxContainer" parent="Margin/Root/Tabs" unique_id=1693289324]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+metadata/_tab_index = 0
+
+[node name="BaseLabel" type="Label" parent="Margin/Root/Tabs/Patch" unique_id=580573311]
+layout_mode = 2
+text = "Base PCK / EXE"
+
+[node name="BaseRow" type="HBoxContainer" parent="Margin/Root/Tabs/Patch" unique_id=1126352174]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BasePath" type="LineEdit" parent="Margin/Root/Tabs/Patch/BaseRow" unique_id=844493260]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "C:/path/to/game.pck or game.exe"
+
+[node name="BaseBrowseButton" type="Button" parent="Margin/Root/Tabs/Patch/BaseRow" unique_id=1301691190]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Browse"
+
+[node name="ProjectLabel" type="Label" parent="Margin/Root/Tabs/Patch" unique_id=1803781355]
+layout_mode = 2
+text = "Project Directory"
+
+[node name="ProjectRow" type="HBoxContainer" parent="Margin/Root/Tabs/Patch" unique_id=1587274952]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ProjectPath" type="LineEdit" parent="Margin/Root/Tabs/Patch/ProjectRow" unique_id=1062229435]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "C:/path/to/project"
+
+[node name="ProjectBrowseButton" type="Button" parent="Margin/Root/Tabs/Patch/ProjectRow" unique_id=1140655880]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Browse"
+
+[node name="PatchLabel" type="Label" parent="Margin/Root/Tabs/Patch" unique_id=1867581636]
+layout_mode = 2
+text = "Patch PCK"
+
+[node name="PatchOutputRow" type="HBoxContainer" parent="Margin/Root/Tabs/Patch" unique_id=35751516]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PatchPath" type="LineEdit" parent="Margin/Root/Tabs/Patch/PatchOutputRow" unique_id=684454955]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "C:/path/to/mod_patch.pck"
+
+[node name="PatchBrowseButton" type="Button" parent="Margin/Root/Tabs/Patch/PatchOutputRow" unique_id=1484769160]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Browse"
+
+[node name="ApplyLabel" type="Label" parent="Margin/Root/Tabs/Patch" unique_id=1617204302]
+layout_mode = 2
+text = "Apply Output Directory"
+
+[node name="ApplyOutputRow" type="HBoxContainer" parent="Margin/Root/Tabs/Patch" unique_id=484257297]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ApplyOutputPath" type="LineEdit" parent="Margin/Root/Tabs/Patch/ApplyOutputRow" unique_id=6351473]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "C:/path/to/applied-output"
+
+[node name="ApplyOutputBrowseButton" type="Button" parent="Margin/Root/Tabs/Patch/ApplyOutputRow" unique_id=1699522761]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Browse"
+
+[node name="PatchButtons" type="HBoxContainer" parent="Margin/Root/Tabs/Patch" unique_id=34955126]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MakePatchButton" type="Button" parent="Margin/Root/Tabs/Patch/PatchButtons" unique_id=1980716701]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Make Patch"
+
+[node name="ApplyButton" type="Button" parent="Margin/Root/Tabs/Patch/PatchButtons" unique_id=1635344083]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Apply"
+
+[node name="DevMode" type="VBoxContainer" parent="Margin/Root/Tabs" unique_id=1386460066]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+metadata/_tab_index = 1
+
+[node name="DevBaseLabel" type="Label" parent="Margin/Root/Tabs/DevMode" unique_id=1694170845]
+layout_mode = 2
+text = "Base PCK / EXE"
+
+[node name="DevBaseRow" type="HBoxContainer" parent="Margin/Root/Tabs/DevMode" unique_id=1099738866]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="DevBasePath" type="LineEdit" parent="Margin/Root/Tabs/DevMode/DevBaseRow" unique_id=1015235871]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "C:/path/to/game.pck or game.exe"
+
+[node name="DevBaseBrowseButton" type="Button" parent="Margin/Root/Tabs/DevMode/DevBaseRow" unique_id=508870467]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Browse"
+
+[node name="DevProjectLabel" type="Label" parent="Margin/Root/Tabs/DevMode" unique_id=885870962]
+layout_mode = 2
+text = "Project Directory"
+
+[node name="DevProjectRow" type="HBoxContainer" parent="Margin/Root/Tabs/DevMode" unique_id=767021033]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="DevProjectPath" type="LineEdit" parent="Margin/Root/Tabs/DevMode/DevProjectRow" unique_id=1325941200]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "C:/path/to/project"
+
+[node name="DevProjectBrowseButton" type="Button" parent="Margin/Root/Tabs/DevMode/DevProjectRow" unique_id=952946058]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Browse"
+
+[node name="DevPatchLabel" type="Label" parent="Margin/Root/Tabs/DevMode" unique_id=816731820]
+layout_mode = 2
+text = "Live Patch PCK"
+
+[node name="DevPatchRow" type="HBoxContainer" parent="Margin/Root/Tabs/DevMode" unique_id=2093046701]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="DevPatchPath" type="LineEdit" parent="Margin/Root/Tabs/DevMode/DevPatchRow" unique_id=292350636]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "C:/path/to/live_patch.pck"
+
+[node name="DevPatchBrowseButton" type="Button" parent="Margin/Root/Tabs/DevMode/DevPatchRow" unique_id=536436983]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Browse"
+
+[node name="SandboxLabel" type="Label" parent="Margin/Root/Tabs/DevMode" unique_id=1247945186]
+layout_mode = 2
+text = "Sandbox Directory"
+
+[node name="SandboxRow" type="HBoxContainer" parent="Margin/Root/Tabs/DevMode" unique_id=645742143]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SandboxPath" type="LineEdit" parent="Margin/Root/Tabs/DevMode/SandboxRow" unique_id=259554233]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "C:/path/to/live-dev"
+
+[node name="SandboxBrowseButton" type="Button" parent="Margin/Root/Tabs/DevMode/SandboxRow" unique_id=616052042]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Browse"
+
+[node name="IntervalLabel" type="Label" parent="Margin/Root/Tabs/DevMode" unique_id=1242763275]
+layout_mode = 2
+text = "Watch Interval (ms)"
+
+[node name="IntervalPath" type="LineEdit" parent="Margin/Root/Tabs/DevMode" unique_id=1610869922]
+unique_name_in_owner = true
+layout_mode = 2
+text = "500"
+
+[node name="DevButtons" type="HBoxContainer" parent="Margin/Root/Tabs/DevMode" unique_id=1165707135]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="DevBuildButton" type="Button" parent="Margin/Root/Tabs/DevMode/DevButtons" unique_id=1507026504]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dev Build"
+
+[node name="WatchButton" type="Button" parent="Margin/Root/Tabs/DevMode/DevButtons" unique_id=57623268]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Start Watch"
+
+[node name="RunButton" type="Button" parent="Margin/Root/Tabs/DevMode/DevButtons" unique_id=2088071275]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Run Game"
+
+[node name="LogLabel" type="Label" parent="Margin/Root" unique_id=706289916]
+layout_mode = 2
+text = "Log"
+
+[node name="LogOutput" type="TextEdit" parent="Margin/Root" unique_id=1587156904]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_log")
+editable = false
+
+[node name="PathDialog" type="FileDialog" parent="." unique_id=726726124]
+unique_name_in_owner = true
+title = "Select Path"
+access = 2
+use_native_dialog = true
+
+[connection signal="toggled" from="Margin/Root/AdvancedToggle" to="." method="_on_advanced_toggle_toggled"]
+[connection signal="pressed" from="Margin/Root/Tabs/Patch/BaseRow/BaseBrowseButton" to="." method="_on_base_browse_pressed"]
+[connection signal="pressed" from="Margin/Root/Tabs/Patch/ProjectRow/ProjectBrowseButton" to="." method="_on_project_browse_pressed"]
+[connection signal="pressed" from="Margin/Root/Tabs/Patch/PatchOutputRow/PatchBrowseButton" to="." method="_on_patch_browse_pressed"]
+[connection signal="pressed" from="Margin/Root/Tabs/Patch/ApplyOutputRow/ApplyOutputBrowseButton" to="." method="_on_apply_output_browse_pressed"]
+[connection signal="pressed" from="Margin/Root/Tabs/Patch/PatchButtons/MakePatchButton" to="." method="_on_make_patch_pressed"]
+[connection signal="pressed" from="Margin/Root/Tabs/Patch/PatchButtons/ApplyButton" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="Margin/Root/Tabs/DevMode/DevBaseRow/DevBaseBrowseButton" to="." method="_on_dev_base_browse_pressed"]
+[connection signal="pressed" from="Margin/Root/Tabs/DevMode/DevProjectRow/DevProjectBrowseButton" to="." method="_on_dev_project_browse_pressed"]
+[connection signal="pressed" from="Margin/Root/Tabs/DevMode/DevPatchRow/DevPatchBrowseButton" to="." method="_on_dev_patch_browse_pressed"]
+[connection signal="pressed" from="Margin/Root/Tabs/DevMode/SandboxRow/SandboxBrowseButton" to="." method="_on_sandbox_browse_pressed"]
+[connection signal="pressed" from="Margin/Root/Tabs/DevMode/DevButtons/DevBuildButton" to="." method="_on_dev_build_pressed"]
+[connection signal="pressed" from="Margin/Root/Tabs/DevMode/DevButtons/WatchButton" to="." method="_on_watch_pressed"]
+[connection signal="pressed" from="Margin/Root/Tabs/DevMode/DevButtons/RunButton" to="." method="_on_run_button_pressed"]
+[connection signal="dir_selected" from="PathDialog" to="." method="_on_path_dialog_dir_selected"]
+[connection signal="file_selected" from="PathDialog" to="." method="_on_path_dialog_file_selected"]

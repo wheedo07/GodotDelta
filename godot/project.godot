@@ -1,0 +1,27 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="GodotDelta"
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.6")
+config/icon="uid://b4ubvq5hev2go"
+boot_splash/minimum_display_time=300
+
+[display]
+
+window/size/viewport_width=1200
+window/size/viewport_height=750
+window/size/maximize_disabled=true
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.13399999, 0.1505, 0.2, 1)
