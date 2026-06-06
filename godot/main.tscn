@@ -53,18 +53,18 @@ text = "GodotDelta"
 [node name="Subheader" type="Label" parent="Margin/Root" unique_id=735948443]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.670588, 0.733333, 0.858824, 1)
-text = "Patch and apply Godot 4.x projects with the packaged gddelta runtime."
+text = "APP_SUBHEADER"
 
 [node name="RuntimeStatus" type="Label" parent="Margin/Root" unique_id=223692293]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.552941, 0.615686, 0.733333, 1)
-text = "gddelta: resolving..."
+text = "RUNTIME_STATUS_RESOLVING"
 
 [node name="AdvancedToggle" type="CheckBox" parent="Margin/Root" unique_id=884014002]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Enable advanced features"
+text = "ENABLE_ADVANCED_FEATURES"
 
 [node name="Tabs" type="TabContainer" parent="Margin/Root" unique_id=1863694952]
 layout_mode = 2
@@ -80,7 +80,7 @@ metadata/_tab_index = 0
 
 [node name="BaseLabel" type="Label" parent="Margin/Root/Tabs/Patch" unique_id=580573311]
 layout_mode = 2
-text = "Base PCK / EXE"
+text = "BASE_PCK_EXE"
 
 [node name="BaseRow" type="HBoxContainer" parent="Margin/Root/Tabs/Patch" unique_id=1126352174]
 layout_mode = 2
@@ -90,16 +90,16 @@ theme_override_constants/separation = 8
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "C:/path/to/game.pck or game.exe"
+placeholder_text = "PLACEHOLDER_BASE_PATH"
 
 [node name="BaseBrowseButton" type="Button" parent="Margin/Root/Tabs/Patch/BaseRow" unique_id=1301691190]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Browse"
+text = "BROWSE"
 
 [node name="ProjectLabel" type="Label" parent="Margin/Root/Tabs/Patch" unique_id=1803781355]
 layout_mode = 2
-text = "Project Directory"
+text = "PROJECT_DIRECTORY"
 
 [node name="ProjectRow" type="HBoxContainer" parent="Margin/Root/Tabs/Patch" unique_id=1587274952]
 layout_mode = 2
@@ -109,16 +109,16 @@ theme_override_constants/separation = 8
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "C:/path/to/project"
+placeholder_text = "PLACEHOLDER_PROJECT_PATH"
 
 [node name="ProjectBrowseButton" type="Button" parent="Margin/Root/Tabs/Patch/ProjectRow" unique_id=1140655880]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Browse"
+text = "BROWSE"
 
 [node name="PatchLabel" type="Label" parent="Margin/Root/Tabs/Patch" unique_id=1867581636]
 layout_mode = 2
-text = "Patch PCK"
+text = "PATCH_PCK"
 
 [node name="PatchOutputRow" type="HBoxContainer" parent="Margin/Root/Tabs/Patch" unique_id=35751516]
 layout_mode = 2
@@ -128,16 +128,16 @@ theme_override_constants/separation = 8
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "C:/path/to/mod_patch.pck"
+placeholder_text = "PLACEHOLDER_PATCH_PATH"
 
 [node name="PatchBrowseButton" type="Button" parent="Margin/Root/Tabs/Patch/PatchOutputRow" unique_id=1484769160]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Browse"
+text = "BROWSE"
 
 [node name="ApplyLabel" type="Label" parent="Margin/Root/Tabs/Patch" unique_id=1617204302]
 layout_mode = 2
-text = "Apply Output Directory"
+text = "APPLY_OUTPUT_DIRECTORY"
 
 [node name="ApplyOutputRow" type="HBoxContainer" parent="Margin/Root/Tabs/Patch" unique_id=484257297]
 layout_mode = 2
@@ -147,12 +147,12 @@ theme_override_constants/separation = 8
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "C:/path/to/applied-output"
+placeholder_text = "PLACEHOLDER_APPLY_OUTPUT_PATH"
 
 [node name="ApplyOutputBrowseButton" type="Button" parent="Margin/Root/Tabs/Patch/ApplyOutputRow" unique_id=1699522761]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Browse"
+text = "BROWSE"
 
 [node name="PatchButtons" type="HBoxContainer" parent="Margin/Root/Tabs/Patch" unique_id=34955126]
 layout_mode = 2
@@ -162,13 +162,13 @@ theme_override_constants/separation = 8
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Make Patch"
+text = "MAKE_PATCH"
 
 [node name="ApplyButton" type="Button" parent="Margin/Root/Tabs/Patch/PatchButtons" unique_id=1635344083]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Apply"
+text = "APPLY"
 
 [node name="DevMode" type="VBoxContainer" parent="Margin/Root/Tabs" unique_id=1386460066]
 unique_name_in_owner = true
@@ -179,7 +179,7 @@ metadata/_tab_index = 1
 
 [node name="DevBaseLabel" type="Label" parent="Margin/Root/Tabs/DevMode" unique_id=1694170845]
 layout_mode = 2
-text = "Base PCK / EXE"
+text = "BASE_PCK_EXE"
 
 [node name="DevBaseRow" type="HBoxContainer" parent="Margin/Root/Tabs/DevMode" unique_id=1099738866]
 layout_mode = 2
@@ -189,16 +189,16 @@ theme_override_constants/separation = 8
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "C:/path/to/game.pck or game.exe"
+placeholder_text = "PLACEHOLDER_BASE_PATH"
 
 [node name="DevBaseBrowseButton" type="Button" parent="Margin/Root/Tabs/DevMode/DevBaseRow" unique_id=508870467]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Browse"
+text = "BROWSE"
 
 [node name="DevProjectLabel" type="Label" parent="Margin/Root/Tabs/DevMode" unique_id=885870962]
 layout_mode = 2
-text = "Project Directory"
+text = "PROJECT_DIRECTORY"
 
 [node name="DevProjectRow" type="HBoxContainer" parent="Margin/Root/Tabs/DevMode" unique_id=767021033]
 layout_mode = 2
@@ -208,16 +208,16 @@ theme_override_constants/separation = 8
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "C:/path/to/project"
+placeholder_text = "PLACEHOLDER_PROJECT_PATH"
 
 [node name="DevProjectBrowseButton" type="Button" parent="Margin/Root/Tabs/DevMode/DevProjectRow" unique_id=952946058]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Browse"
+text = "BROWSE"
 
 [node name="DevPatchLabel" type="Label" parent="Margin/Root/Tabs/DevMode" unique_id=816731820]
 layout_mode = 2
-text = "Live Patch PCK"
+text = "LIVE_PATCH_PCK"
 
 [node name="DevPatchRow" type="HBoxContainer" parent="Margin/Root/Tabs/DevMode" unique_id=2093046701]
 layout_mode = 2
@@ -227,16 +227,16 @@ theme_override_constants/separation = 8
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "C:/path/to/live_patch.pck"
+placeholder_text = "PLACEHOLDER_LIVE_PATCH_PATH"
 
 [node name="DevPatchBrowseButton" type="Button" parent="Margin/Root/Tabs/DevMode/DevPatchRow" unique_id=536436983]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Browse"
+text = "BROWSE"
 
 [node name="SandboxLabel" type="Label" parent="Margin/Root/Tabs/DevMode" unique_id=1247945186]
 layout_mode = 2
-text = "Sandbox Directory"
+text = "SANDBOX_DIRECTORY"
 
 [node name="SandboxRow" type="HBoxContainer" parent="Margin/Root/Tabs/DevMode" unique_id=645742143]
 layout_mode = 2
@@ -246,16 +246,16 @@ theme_override_constants/separation = 8
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "C:/path/to/live-dev"
+placeholder_text = "PLACEHOLDER_SANDBOX_PATH"
 
 [node name="SandboxBrowseButton" type="Button" parent="Margin/Root/Tabs/DevMode/SandboxRow" unique_id=616052042]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Browse"
+text = "BROWSE"
 
 [node name="IntervalLabel" type="Label" parent="Margin/Root/Tabs/DevMode" unique_id=1242763275]
 layout_mode = 2
-text = "Watch Interval (ms)"
+text = "WATCH_INTERVAL_MS"
 
 [node name="IntervalPath" type="LineEdit" parent="Margin/Root/Tabs/DevMode" unique_id=1610869922]
 unique_name_in_owner = true
@@ -270,23 +270,23 @@ theme_override_constants/separation = 8
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Dev Build"
+text = "DEV_BUILD"
 
 [node name="WatchButton" type="Button" parent="Margin/Root/Tabs/DevMode/DevButtons" unique_id=57623268]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Start Watch"
+text = "START_WATCH"
 
 [node name="RunButton" type="Button" parent="Margin/Root/Tabs/DevMode/DevButtons" unique_id=2088071275]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Run Game"
+text = "RUN_GAME"
 
 [node name="LogLabel" type="Label" parent="Margin/Root" unique_id=706289916]
 layout_mode = 2
-text = "Log"
+text = "LOG"
 
 [node name="LogOutput" type="TextEdit" parent="Margin/Root" unique_id=1587156904]
 unique_name_in_owner = true
@@ -297,7 +297,7 @@ editable = false
 
 [node name="PathDialog" type="FileDialog" parent="." unique_id=726726124]
 unique_name_in_owner = true
-title = "Select Path"
+title = "SELECT_PATH"
 access = 2
 use_native_dialog = true
 

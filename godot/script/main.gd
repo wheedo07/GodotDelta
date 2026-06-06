@@ -30,13 +30,13 @@ var watch_log_position := 0
 var watch_log_poll_accumulator := 0.0
 
 func _ready() -> void:
-	gddelta_executable_path = _default_gddelta_path()
-	runtime_status_label.text = "gddelta: " + gddelta_executable_path
-	_update_advanced_state()
+	gddelta_executable_path = _default_gddelta_path();
+	runtime_status_label.text = "gddelta: " + gddelta_executable_path;
+	_update_advanced_state();
 
 
 func _exit_tree() -> void:
-	_stop_watch_process()
+	_stop_watch_process();
 
 
 func _process(delta: float) -> void:
@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 		return
 
 	if(!OS.is_process_running(watch_pid)):
-		append_log("Watch process exited.")
+		append_log(tr("WATCH_PROCESS_EXITED"))
 		watch_pid = -1
 		_reset_watch_log_state()
 		_update_watch_button()
@@ -74,9 +74,9 @@ func _update_advanced_state() -> void:
 
 func _on_make_patch_pressed() -> void:
 	if(!_validate_required_paths([
-		["Base Path", base_path_edit],
-		["Project Path", project_path_edit],
-		["Patch Output", patch_path_edit],
+		[tr("BASE_PATH"), base_path_edit],
+		[tr("PROJECT_PATH"), project_path_edit],
+		[tr("PATCH_OUTPUT"), patch_path_edit],
 	])): return
 
 	run_gddelta([
@@ -88,9 +88,9 @@ func _on_make_patch_pressed() -> void:
 
 func _on_apply_pressed() -> void:
 	if(!_validate_required_paths([
-		["Base Path", base_path_edit],
-		["Patch Path", patch_path_edit],
-		["Output Directory", apply_output_path_edit],
+		[tr("BASE_PATH"), base_path_edit],
+		[tr("PATCH_PATH"), patch_path_edit],
+		[tr("OUTPUT_DIRECTORY"), apply_output_path_edit],
 	])): return
 
 	run_gddelta([
@@ -103,9 +103,9 @@ func _on_apply_pressed() -> void:
 
 func _on_dev_build_pressed() -> void:
 	if(!_validate_required_paths([
-		["Base Path", dev_base_path_edit],
-		["Project Path", dev_project_path_edit],
-		["Sandbox Directory", sandbox_path_edit],
+		[tr("BASE_PATH"), dev_base_path_edit],
+		[tr("PROJECT_PATH"), dev_project_path_edit],
+		[tr("SANDBOX_DIRECTORY"), sandbox_path_edit],
 	])):
 		return
 
@@ -120,20 +120,20 @@ func _on_dev_build_pressed() -> void:
 func _on_watch_pressed() -> void:
 	if(watch_pid != -1):
 		if(!_stop_watch_process()):
-			append_log("Failed to stop watch process.")
+			append_log(tr("FAILED_TO_STOP_WATCH_PROCESS"))
 			return
 		return
 
 	var executable := gddelta_executable_path.strip_edges()
 	if(executable.is_empty()):
-		append_log("gddelta executable path is empty.")
+		append_log(tr("GDDELTA_EXECUTABLE_PATH_IS_EMPTY"))
 		return
 
 	if(!_validate_required_paths([
-		["Base Path", dev_base_path_edit],
-		["Project Path", dev_project_path_edit],
-		["Live Patch PCK", dev_patch_path_edit],
-		["Sandbox Directory", sandbox_path_edit],
+		[tr("BASE_PATH"), dev_base_path_edit],
+		[tr("PROJECT_PATH"), dev_project_path_edit],
+		[tr("LIVE_PATCH_PCK"), dev_patch_path_edit],
+		[tr("SANDBOX_DIRECTORY"), sandbox_path_edit],
 	])): return
 
 	var args := PackedStringArray([
@@ -149,29 +149,29 @@ func _on_watch_pressed() -> void:
 	append_log("> " + executable + " " + " ".join(args))
 	var pid := OS.create_process(executable, args, false)
 	if(pid == -1):
-		append_log("Failed to start watch process.")
+		append_log(tr("FAILED_TO_START_WATCH_PROCESS"))
 		return
 	watch_pid = pid
-	append_log("Started watch process with pid %d" % watch_pid)
+	append_log(tr("STARTED_WATCH_PROCESS_WITH_PID") % watch_pid)
 	_update_watch_button()
 
 
 func _on_run_button_pressed() -> void:
 	if(!_validate_required_paths([
-		["Sandbox Directory", sandbox_path_edit],
+		[tr("SANDBOX_DIRECTORY"), sandbox_path_edit],
 	])): return
 
 	var executable := _resolve_sandbox_executable()
 	if(executable.is_empty()):
-		append_log("Failed to find a runnable game executable in sandbox.")
+		append_log(tr("FAILED_TO_FIND_RUNNABLE_GAME_EXECUTABLE_IN_SANDBOX"))
 		return
 
 	append_log("> " + executable)
 	var pid := OS.create_process(executable, PackedStringArray(), false)
 	if(pid == -1):
-		append_log("Failed to start sandbox game process.")
+		append_log(tr("FAILED_TO_START_SANDBOX_GAME_PROCESS"))
 		return
-	append_log("Started sandbox game with pid %d" % pid)
+	append_log(tr("STARTED_SANDBOX_GAME_WITH_PID") % pid)
 
 
 func _on_base_browse_pressed() -> void:
@@ -216,18 +216,18 @@ func _on_path_dialog_dir_selected(dir: String) -> void:
 func run_gddelta(args: Array[String]) -> void:
 	var executable := gddelta_executable_path.strip_edges()
 	if(executable.is_empty()):
-		append_log("gddelta executable path is empty.")
+		append_log(tr("GDDELTA_EXECUTABLE_PATH_IS_EMPTY"))
 		return
 
 	var output := []
 	append_log("> " + executable + " " + " ".join(args))
 	var exit_code := OS.execute(executable, PackedStringArray(args), output, true, false)
 	if(output.is_empty()):
-		append_log("(no output)")
+		append_log(tr("NO_OUTPUT"))
 	else:
 		for line in output:
 			append_log(str(line))
-	append_log("Exit code: %d" % exit_code)
+	append_log(tr("EXIT_CODE") % exit_code)
 
 
 func append_log(message: String) -> void:
@@ -240,7 +240,7 @@ func _validate_required_paths(required_fields: Array) -> bool:
 		var label: String = entry[0]
 		var edit: LineEdit = entry[1]
 		if(edit.text.strip_edges().is_empty()):
-			append_log(label + " is required.")
+			append_log(tr("FIELD_IS_REQUIRED") % label)
 			return false
 
 	return true
@@ -248,7 +248,7 @@ func _validate_required_paths(required_fields: Array) -> bool:
 
 func _validate_dialog_target_path(target: LineEdit) -> bool:
 	if(target == null):
-		append_log("Path target is missing.")
+		append_log(tr("PATH_TARGET_IS_MISSING"))
 		return false
 
 	return true
@@ -276,9 +276,9 @@ func _default_gddelta_path() -> String:
 
 func _update_watch_button() -> void:
 	if(watch_pid == -1):
-		watch_button.text = "Start Watch"
+		watch_button.text = tr("START_WATCH")
 	else:
-		watch_button.text = "Stop Watch"
+		watch_button.text = tr("STOP_WATCH")
 
 
 func _stop_watch_process() -> bool:
@@ -293,9 +293,9 @@ func _stop_watch_process() -> bool:
 	_reset_watch_log_state()
 	_update_watch_button()
 	if(!success):
-		append_log("Failed to stop watch process with pid %d" % previous_pid)
+		append_log(tr("FAILED_TO_STOP_WATCH_PROCESS_WITH_PID") % previous_pid)
 		return false
-	append_log("Stopped watch process with pid %d" % previous_pid)
+	append_log(tr("STOPPED_WATCH_PROCESS_WITH_PID") % previous_pid)
 	return true
 
 

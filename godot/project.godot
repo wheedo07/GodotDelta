@@ -11,16 +11,21 @@ config_version=5
 [application]
 
 config/name="GodotDelta"
+config/version="0.1.1"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.6")
 config/icon="uid://b4ubvq5hev2go"
-boot_splash/minimum_display_time=300
+boot_splash/minimum_display_time=500
 
 [display]
 
 window/size/viewport_width=1200
 window/size/viewport_height=750
 window/size/maximize_disabled=true
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://translation/translation.en.translation", "res://translation/translation.ko.translation")
 
 [rendering]
 
